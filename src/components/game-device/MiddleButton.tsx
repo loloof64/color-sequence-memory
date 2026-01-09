@@ -1,7 +1,7 @@
 import "./MiddleButton.css";
 
 function MiddleButton() {
-  return <button className="middleButton">Start</button>;
+  return <div className="middleButton">Start</div>;
 }
 
 export default MiddleButton;
