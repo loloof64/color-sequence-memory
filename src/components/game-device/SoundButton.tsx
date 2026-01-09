@@ -1,14 +1,23 @@
 import { useState } from "react";
 import "./SoundButton.css";
 import classNames from "classnames";
+import beep from "../../core/beep";
+
+const DELAY_FOR_INACTIVITY_MS = 300;
 
 interface SoundButtonParams {
   color: string;
   radiusX: "left" | "right";
   radiusY: "top" | "bottom";
+  beepFrequency: number;
 }
 
-function SoundButton({ color, radiusX, radiusY }: SoundButtonParams) {
+function SoundButton({
+  color,
+  radiusX,
+  radiusY,
+  beepFrequency,
+}: SoundButtonParams) {
   const [active, setActive] = useState(false);
 
   // Compute all four corner radii for quarter-circle effect
@@ -26,6 +35,13 @@ function SoundButton({ color, radiusX, radiusY }: SoundButtonParams) {
     active,
   });
 
+  function handlePress() {
+    setActive(true);
+    beep(beepFrequency, DELAY_FOR_INACTIVITY_MS);
+
+    setTimeout(() => setActive(false), DELAY_FOR_INACTIVITY_MS);
+  }
+
   return (
     <div
       className={soundButtonClass}
@@ -36,8 +52,8 @@ function SoundButton({ color, radiusX, radiusY }: SoundButtonParams) {
         borderBottomLeftRadius,
         borderBottomRightRadius,
       }}
-      onMouseDown={() => setActive(true)}
-      onMouseUp={() => setActive(false)}
+      onClick={() => handlePress()}
+      onTouchStart={() => handlePress()}
     ></div>
   );
 }
