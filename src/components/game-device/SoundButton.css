@@ -1,0 +1,7 @@
+.soundButton {
+  filter: brightness(0.3);
+}
+
+.soundButton.active {
+  filter: brightness(1);
+}
