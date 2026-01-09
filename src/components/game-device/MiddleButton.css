@@ -1,0 +1,23 @@
+.middleButton {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middleButton button {
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  padding: 0;
+  border: 0;
+  font-size: x-large;
+}
