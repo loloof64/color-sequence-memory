@@ -9,7 +9,7 @@ const soundFrequencies: Array<number> = [200, 300, 400, 500];
 const SOUND_DURATION_MS = 300;
 const GAME_LOST_FREQUENCY = 100;
 const GAME_LOST_DURATION_MS = 800;
-const SEQUENCE_GAP_MS = 50;
+const SEQUENCE_GAP_MS = 80;
 const NEXT_SEQUENCE_GAP_MS = 100;
 
 function GameZone() {
