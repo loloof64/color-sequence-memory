@@ -4,6 +4,7 @@ import "./GameZone.css";
 import MiddleButton from "./MiddleButton";
 import SoundButton, { ButtonColor } from "./SoundButton";
 import { sleepForTimeMs } from "../../core/utils";
+import { useTranslation } from "react-i18next";
 
 const soundFrequencies: Array<number> = [200, 300, 400, 500];
 const SOUND_DURATION_MS = 300;
@@ -13,6 +14,7 @@ const SEQUENCE_GAP_MS = 80;
 const NEXT_SEQUENCE_GAP_MS = 100;
 
 function GameZone() {
+  const { t } = useTranslation();
   const [activeSound, setActiveSound] = useState<ButtonColor | null>(null);
   const [isInteractive, setIsInteractive] = useState(false);
   const [isInProgress, setIsInProgress] = useState(false);
@@ -87,7 +89,9 @@ function GameZone() {
 
   return (
     <div className="gameZone">
-      <p className="score">Score: {score}</p>
+      <p className="score">
+        {t("score")}: {score}
+      </p>
       <div className="gameDevice">
         <SoundButton
           color={ButtonColor.blue}

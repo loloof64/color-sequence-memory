@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import "./MiddleButton.css";
 
 interface MiddleGameButtonParams {
@@ -5,9 +6,10 @@ interface MiddleGameButtonParams {
 }
 
 function MiddleButton({ startGame }: MiddleGameButtonParams) {
+  const { t } = useTranslation();
   return (
     <div className="middleButton" onClick={startGame}>
-      Start
+      {t("start")}
     </div>
   );
 }
