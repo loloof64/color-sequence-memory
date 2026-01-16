@@ -1,10 +1,10 @@
 import "./App.css";
-import GameDevice from "./components/game-device/GameDevice";
+import GameZone from "./components/game-zone/GameZone";
 
 function App() {
   return (
     <main className="container">
-      <GameDevice />
+      <GameZone />
     </main>
   );
 }

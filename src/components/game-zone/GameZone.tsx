@@ -1,6 +1,6 @@
 import { useState } from "react";
 import beep from "../../core/beep";
-import "./GameDevice.css";
+import "./GameZone.css";
 import MiddleButton from "./MiddleButton";
 import SoundButton, { ButtonColor } from "./SoundButton";
 import { sleepForTimeMs } from "../../core/utils";
@@ -12,7 +12,7 @@ const GAME_LOST_DURATION_MS = 800;
 const SEQUENCE_GAP_MS = 50;
 const NEXT_SEQUENCE_GAP_MS = 100;
 
-function GameDevice() {
+function GameZone() {
   const [activeSound, setActiveSound] = useState<ButtonColor | null>(null);
   const [isInteractive, setIsInteractive] = useState(false);
   const [isInProgress, setIsInProgress] = useState(false);
@@ -83,39 +83,44 @@ function GameDevice() {
     await addColorToSequence();
   };
 
+  const score = sequence.length > 0 ? sequence.length - 1 : 0;
+
   return (
-    <div className="gameDevice">
-      <SoundButton
-        color={ButtonColor.blue}
-        radiusX="left"
-        radiusY="top"
-        active={activeSound === ButtonColor.blue}
-        playSound={() => handleColorSelected(ButtonColor.blue)}
-      />
-      <SoundButton
-        color={ButtonColor.red}
-        radiusX="right"
-        radiusY="top"
-        active={activeSound === ButtonColor.red}
-        playSound={() => handleColorSelected(ButtonColor.red)}
-      />
-      <SoundButton
-        color={ButtonColor.yellow}
-        radiusX="left"
-        radiusY="bottom"
-        active={activeSound === ButtonColor.yellow}
-        playSound={() => handleColorSelected(ButtonColor.yellow)}
-      />
-      <SoundButton
-        color={ButtonColor.green}
-        radiusX="right"
-        radiusY="bottom"
-        active={activeSound === ButtonColor.green}
-        playSound={() => handleColorSelected(ButtonColor.green)}
-      />
-      <MiddleButton startGame={handleStartGame} />
+    <div className="gameZone">
+      <p className="score">Score: {score}</p>
+      <div className="gameDevice">
+        <SoundButton
+          color={ButtonColor.blue}
+          radiusX="left"
+          radiusY="top"
+          active={activeSound === ButtonColor.blue}
+          playSound={() => handleColorSelected(ButtonColor.blue)}
+        />
+        <SoundButton
+          color={ButtonColor.red}
+          radiusX="right"
+          radiusY="top"
+          active={activeSound === ButtonColor.red}
+          playSound={() => handleColorSelected(ButtonColor.red)}
+        />
+        <SoundButton
+          color={ButtonColor.yellow}
+          radiusX="left"
+          radiusY="bottom"
+          active={activeSound === ButtonColor.yellow}
+          playSound={() => handleColorSelected(ButtonColor.yellow)}
+        />
+        <SoundButton
+          color={ButtonColor.green}
+          radiusX="right"
+          radiusY="bottom"
+          active={activeSound === ButtonColor.green}
+          playSound={() => handleColorSelected(ButtonColor.green)}
+        />
+        <MiddleButton startGame={handleStartGame} />
+      </div>
     </div>
   );
 }
 
-export default GameDevice;
+export default GameZone;

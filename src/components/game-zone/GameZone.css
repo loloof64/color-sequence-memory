@@ -1,3 +1,10 @@
+.gameZone {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .gameDevice {
   position: relative;
   display: grid;
@@ -8,4 +15,9 @@
   width: 80vmin;
   height: 80vmin;
   border-radius: 50%;
+}
+
+.score {
+  color: blue;
+  font-size: larger;
 }
