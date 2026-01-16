@@ -1,4 +1,6 @@
-function beep(frequency = 440, duration = 200) {
+import { sleepForTimeMs } from "./utils";
+
+async function beep(frequency = 440, duration = 200) {
   const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
   const ctx = new AudioCtx();
   const oscillator = ctx.createOscillator();
@@ -7,10 +9,10 @@ function beep(frequency = 440, duration = 200) {
   oscillator.connect(ctx.destination);
   oscillator.start();
 
-  setTimeout(() => {
-    oscillator.stop();
-    ctx.close();
-  }, duration);
+  await sleepForTimeMs(duration);
+
+  oscillator.stop();
+  ctx.close();
 }
 
 export default beep;

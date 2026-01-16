@@ -1,7 +1,15 @@
 import "./MiddleButton.css";
 
-function MiddleButton() {
-  return <div className="middleButton">Start</div>;
+interface MiddleGameButtonParams {
+  startGame: () => void;
+}
+
+function MiddleButton({ startGame }: MiddleGameButtonParams) {
+  return (
+    <div className="middleButton" onClick={startGame}>
+      Start
+    </div>
+  );
 }
 
 export default MiddleButton;
